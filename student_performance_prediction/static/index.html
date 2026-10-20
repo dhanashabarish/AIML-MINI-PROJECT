@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Grade Signal | Student Performance</title>
+  <meta name="description" content="Answer a short student check-in and see an estimated final grade.">
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="/static/style.css" />
+</head>
+<body>
+  <div class="app-shell">
+    <header class="topbar">
+      <a class="wordmark" href="/" aria-label="Grade Signal home">
+        <span class="wordmark-icon" aria-hidden="true">GS</span>
+        <span>grade<span class="wordmark-accent">signal</span></span>
+      </a>
+      <button type="button" id="history-btn" class="history-toggle" aria-expanded="false" aria-controls="history-panel">
+        <span class="history-icon" aria-hidden="true">↗</span>
+        Prediction history
+      </button>
+    </header>
+
+    <main>
+      <section class="intro" aria-labelledby="page-title">
+        <p class="eyebrow"><span class="status-dot"></span> STUDENT CHECK-IN</p>
+        <h1 id="page-title">A clearer picture<br />of your <span>next grade.</span></h1>
+        <p class="intro-copy">Answer six quick questions about your school routine. Your estimate is based on your study habits and previous results.</p>
+      </section>
+
+      <section class="quiz-panel" aria-label="Grade prediction quiz">
+        <div class="quiz-topline">
+          <div>
+            <p class="section-kicker">GRADE ESTIMATE</p>
+            <p id="step-count" class="step-count">Question 1 of 5</p>
+          </div>
+          <span class="quiz-mark" aria-hidden="true"><span id="quiz-current">01</span> <span id="quiz-total">/ 06</span></span>
+        </div>
+        <div class="progress-track" role="progressbar" aria-label="Quiz progress" aria-valuemin="1" aria-valuemax="6" aria-valuenow="1">
+          <span id="progress-fill"></span>
+        </div>
+
+        <form id="predict-form" novalidate>
+          <div id="question-content" class="question-content" aria-live="polite"></div>
+          <div class="quiz-actions">
+            <button type="button" id="back-btn" class="back-btn" disabled>Back</button>
+            <button type="submit" id="next-btn" class="next-btn">Continue <span aria-hidden="true">→</span></button>
+          </div>
+        </form>
+        <div id="result" class="result" aria-live="polite" hidden></div>
+        <p class="privacy-note"><span aria-hidden="true">●</span> Your answers are saved to prediction history.</p>
+      </section>
+
+      <section id="history-panel" class="history-panel" aria-labelledby="history-title" hidden>
+        <div class="history-heading">
+          <div>
+            <p class="section-kicker">YOUR PREDICTIONS</p>
+            <h2 id="history-title">Recent history</h2>
+          </div>
+          <span id="history-count" class="history-count">0 records</span>
+        </div>
+        <div id="history-content" class="history-content" aria-live="polite">
+          <p class="history-empty">Loading your predictions...</p>
+        </div>
+      </section>
+    </main>
+    <footer><span>GRADE SIGNAL</span><span>ESTIMATES ARE A GUIDE, NOT A GUARANTEE</span></footer>
+  </div>
+  <script src="/static/script.js"></script>
+</body>
+</html>
